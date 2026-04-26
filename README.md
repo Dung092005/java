@@ -160,27 +160,3 @@ Thay `polymorphism.CastDemo` bằng lớp có `public static void main` và đú
 
 ---
 
-## Đồng bộ lên GitHub
-
-```powershell
-cd "c:\Users\admin\OneDrive\Desktop\learn_java"
-git init
-git add .
-git commit -m "Initial commit: Java OOP learning project and documentation"
-git branch -M main
-git remote add origin https://github.com/Dung092005/java.git
-git push -u origin main
-```
-
-- Nếu remote đã tồn tại: `git remote set-url origin https://github.com/Dung092005/java.git`
-- Xác thực HTTPS: dùng [Personal Access Token](https://github.com/settings/tokens) thay cho mật khẩu.
-
----
-
-## Ghi chú về tên thư mục
-
-`first_revise`, `last_rivise` là tên đặt theo thói quen/bài ôn — phải khớp với câu lệnh `package` trong từng file `.java`. Đổi tên thư mục cần cập nhật đồng bộ `package` và lệnh `javac`/`java`.
-
----
-
-*Tài liệu cho repository [Dung092005/java](https://github.com/Dung092005/java).*
