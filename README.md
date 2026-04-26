@@ -4,7 +4,7 @@ Repository tập hợp mã nguồn Java phục vụ học và ôn: **OOP**, **đ
 
 **GitHub:** [https://github.com/Dung092005/java](https://github.com/Dung092005/java)
 
-> **Lưu ý:** Nếu trong thư mục gốc chưa có `README.md` (ví dụ OneDrive chưa đồng bộ), bạn có thể copy nội dung file này thành `README.md` ở gốc repo để GitHub hiển thị mặc định.
+**Mã nguồn `src/`:** Nếu máy báo lỗi OneDrive (“cloud file provider”) hoặc `git add` báo `Invalid argument` với file trong `src/`, hãy mở OneDrive và đợi thư mục project **Available on this device** (tải xuống đầy đủ), rồi chạy: `git add src/ && git commit -m "Add Java sources" && git push`.
 
 ---
 
