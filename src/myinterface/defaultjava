@@ -1,0 +1,46 @@
+package myinterface;
+
+interface Animal {
+    void sound();  // phương thức trừu tượng
+
+    // phương thức có sẵn code
+    default void sleep() {
+        System.out.println("Sleeping...");
+    }
+}
+
+class Dog implements Animal {
+    public void sound() {
+        System.out.println("Woof!");
+    }
+}
+
+class Cat implements Animal {
+    public void sound() {
+        System.out.println("Meow!");
+    }
+
+    // Ghi đè lại phương thức default (nếu muốn)
+    @Override
+    public void sleep() {
+        System.out.println("Cat sleeping...");
+    }
+}
+
+public class defaul{
+    public static void main(String[] args) {
+        Dog d = new Dog();
+        d.sound();
+        d.sleep();  // dùng phiên bản mặc định
+
+        Cat c = new Cat();
+        c.sound();
+        c.sleep();  // dùng phiên bản override
+    }
+}
+
+
+// trong interface chỉ có abtract method, ko cho phép có method mà có body, nhưng nó dẫn tới 1 vấn đề đó là, khi bản thiết kế mik muốn thêm 
+// 1 method hay cái j đó, thì mik thêm vào interface thì các hàm con của nó phải thay đổi hết--> rất phiền 
+// vì vậy có default, nó có thể có body như bthg, nó vẫn có tính di truyền, các chức năng bình thường nhưng nó ko nhất thiết phải ghi đè và 
+// bắt buộc phải có trong các hàm 

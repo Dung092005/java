@@ -1,0 +1,3 @@
+lap , black , 40.0
+phone , pink , 30.0
+ipad , blue , 20.0

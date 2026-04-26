@@ -1,0 +1,67 @@
+Compile time → Lỗi về cú pháp, kiểu, quy tắc ngôn ngữ.
+
+Runtime → Lỗi chỉ xảy ra khi chương trình thực sự chạy.\
+
+
+⚙️ 2. Types of Polymorphism in Java
+
+There are two main types:
+
+Type	                    When it happens	                           How it’s achieved
+Compile-time polymorphism	 During compile time	                  Using method overloading
+Runtime polymorphism	     During runtime (program execution)	   Using method overriding
+
+
+----------------overloading ------------------------------
+
+class MathOperation {
+    int add(int a, int b) {
+        return a + b;
+    }
+
+    double add(double a, double b) {
+        return a + b;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        MathOperation m = new MathOperation();
+        System.out.println(m.add(3, 4));       // calls int version
+        System.out.println(m.add(2.5, 1.5));   // calls double version
+    }
+}
+
+--------------overriding--------------------------------------
+
+class Animal {
+    void sound() {
+        System.out.println("Some sound");
+    }
+}
+
+class Dog extends Animal {
+    void sound() {
+        System.out.println("Woof!");
+    }
+}
+
+class Cat extends Animal {
+    void sound() {
+        System.out.println("Meow!");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Animal a1 = new Dog();
+        Animal a2 = new Cat();
+
+        a1.sound();   // calls Dog's sound()
+        a2.sound();   // calls Cat's sound()
+    }
+}
+
+
+-->woof
+--> Meow 

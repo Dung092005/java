@@ -1,0 +1,88 @@
+1. Cùng một hành động (method), nhưng thực hiện khác nhau tùy đối tượng.
+Ví dụ:
+Đều có phương thức speak(),
+Nhưng Dog sủa, Cat kêu meo, Cow kêu bò.
+Tức là: một tên hàm – nhiều cách thực hiện.
+
+2. Trong Java (và hầu hết ngôn ngữ OOP) có 2 loại:
+
+Loại	Tên gọi	Thời điểm xảy ra	Cách đạt được
+Compile-time polymorphism	(Static polymorphism)	Khi biên dịch	Method Overloading
+Runtime polymorphism	(Dynamic polymorphism)	Khi chạy	Method Overriding
+
+3. ví dụ về overloading và overriding.
+
+    👉 Cùng tên hàm, nhưng khác tham số (số lượng, kiểu dữ liệu, thứ tự).
+
+Ví dụ:
+
+class Calculator {
+    // Cộng 2 số nguyên
+    int add(int a, int b) {
+        return a + b;
+    }
+
+    // Cộng 3 số nguyên
+    int add(int a, int b, int c) {
+        return a + b + c;
+    }
+
+    // Cộng 2 số thực
+    double add(double a, double b) {
+        return a + b;
+    }
+}
+
+
+Khi gọi:
+
+Calculator c = new Calculator();
+System.out.println(c.add(2, 3));      // gọi hàm int add(int, int)
+System.out.println(c.add(2, 3, 4));   // gọi hàm int add(int, int, int)
+System.out.println(c.add(2.5, 3.1));  // gọi hàm double add(double, double)
+
+
+➡️ Trình biên dịch biết sẵn sẽ dùng hàm nào → gọi là compile-time polymorphism.
+
+------------- override method ----------------
+
+👉 Khi lớp con ghi đè (override) phương thức của lớp cha,
+và đối tượng thực tế quyết định phương thức nào được gọi khi chạy.
+
+Ví dụ:
+
+class Animal {
+    void sound() {
+        System.out.println("Animal makes a sound");
+    }
+}
+
+class Dog extends Animal {
+    void sound() {
+        System.out.println("Dog barks: Woof woof!");
+    }
+}
+
+class Cat extends Animal {
+    void sound() {
+        System.out.println("Cat meows: Meow meow!");
+    }
+}
+
+
+Khi chạy:
+
+public class Main {
+    public static void main(String[] args) {
+        Animal a1 = new Dog(); // Đối tượng thật là Dog
+        Animal a2 = new Cat(); // Đối tượng thật là Cat
+
+        a1.sound(); // In: Dog barks: Woof woof!
+        a2.sound(); // In: Cat meows: Meow meow!
+    }
+}
+
+
+➡️ Cùng kiểu biến (Animal)
+➡️ Nhưng kết quả khác nhau tùy đối tượng thực tế (Dog, Cat)
+→ Gọi là runtime polymorphism.

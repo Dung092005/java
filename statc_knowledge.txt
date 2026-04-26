@@ -1,0 +1,83 @@
+Mình giải thích ngay sự khác nhau giữa có static và không có static trong Java, đặc biệt với hàm f() mà mình ví dụ.
+
+1. Hàm có static
+java
+Sao chép mã
+class Example {
+    static int cnt = 0;   // biến static
+    static void f() {     // hàm static
+        cnt++;
+        System.out.println(cnt);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Example.f(); // in 1
+        Example.f(); // in 2
+        Example.f(); // in 3
+    }
+}
+cnt là biến static → tồn tại suốt chương trình, dùng chung cho mọi lần gọi hàm.
+
+f() là hàm static → gọi được trực tiếp qua tên class (Example.f()), không cần tạo object.
+
+👉 Kết quả:
+
+Sao chép mã
+1
+2
+3
+2. Hàm không có static
+java
+Sao chép mã
+class Example {
+    int cnt = 0;    // biến thường (instance variable)
+    void f() {      // hàm thường (instance method)
+        cnt++;
+        System.out.println(cnt);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Example e1 = new Example();
+        e1.f(); // in 1
+        e1.f(); // in 2
+        e1.f(); // in 3
+
+        Example e2 = new Example();
+        e2.f(); // in 1 (đếm lại từ đầu, vì e2 có cnt riêng)
+    }
+}
+cnt là biến của từng object, mỗi object có bản sao riêng.
+
+f() là hàm thường, phải gọi qua object (e1.f(), e2.f()).
+
+👉 Kết quả:
+
+css
+Sao chép mã
+1
+2
+3
+1   <-- vì e2 có cnt riêng, không chung với e1
+3. So sánh
+Nếu có static → biến/hàm thuộc về class, mọi object (hoặc không cần object) đều dùng chung.
+
+Nếu không có static → biến/hàm thuộc về object, mỗi object có bản riêng biệt.
+
+✅ Trả lời thẳng câu hỏi của bạn:
+
+Nếu bạn chỉ dùng một object duy nhất, thì f() có static hay không đều chạy "giống nhau" (vẫn tăng 1, 2, 3).
+
+Nhưng nếu có nhiều object khác nhau, thì phiên bản không static sẽ reset lại biến đếm cho từng object, còn phiên bản có static thì tất cả object dùng chung một biến đếm.
+
+👉 Bạn có muốn mình vẽ sơ đồ minh họa nhiều object với biến static và non-static để thấy rõ "chung" và "riêng" không?
+
+
+
+
+
+
+

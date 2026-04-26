@@ -1,0 +1,16 @@
+1, upcasting là kiểu hàm cha tham chiếu hàm con, sẽ dùng được các hàm con có function giống với hàm cha, nhưng ko dùng đc function 
+hàm cha ko có, ví dụ animal a = new dog() --> vẫn là animal thôi, nhưng dùng đc hàm makenoise() của dog, vì cả animal và dog 
+đều có hàm này, nhưng ko dùng đc hàm wagtail() của dog vì animal ko có --> nch là a vẫn là animal, nma dùng đc hàm ghi đè
+
+2, downcasting, vẫn là hàm a thôi , nhưng muốn dùng hàm wagtail, thì phải ép kiểu nó xuống
+
+Dog d = (Dog) a;         // downcast
+d.wagTail(); 
+
+3, nhưng ép kiểu này thì bị lỗi vì sao runtime bt a là kiểu của dog hay ko, nhỡ a là cat() thì sao vì vậy có hàm intanceof() 
+để check xem liệu nó dog() hay ko 
+
+ if (a instanceof Dog) {      // safe check
+Dog d = (Dog) a;         // downcast
+d.wagTail();             // OK: Dog specific method
+        }
